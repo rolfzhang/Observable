@@ -27,6 +27,10 @@ public protocol ObservableType: class {
     func value() -> T?
 }
 
+public protocol ObservableEditableType: ObservableType {
+    func setValue(value: T?)
+}
+
 extension ObservableType {
     public func addObserver(observer: ObserverType) {
         if observers.containsObject(observers) == false {
@@ -86,7 +90,7 @@ public class Observer<L: AnyObject, S: ObservableType>: NSObject, ObserverType {
     }
 }
 
-public class Observable<O1>: ObservableType {
+public class Observable<O1>: ObservableEditableType {
     
     public typealias T = O1
     public typealias Getter = ()->T?

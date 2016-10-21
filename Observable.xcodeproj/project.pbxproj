@@ -20,7 +20,7 @@
 		7E4898971DB8B51000C00F70 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4898951DB8B51000C00F70 /* LaunchScreen.storyboard */; };
 		7E48989C1DB8B67900C00F70 /* Observable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4898661DB8B3CF00C00F70 /* Observable.framework */; };
 		7E48989D1DB8B67900C00F70 /* Observable.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4898661DB8B3CF00C00F70 /* Observable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7E4898A21DB8F00100C00F70 /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4898A11DB8F00100C00F70 /* ObservableObject.swift */; };
+		7E4898A21DB8F00100C00F70 /* ObservableUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4898A11DB8F00100C00F70 /* ObservableUI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +71,7 @@
 		7E4898931DB8B51000C00F70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E4898961DB8B51000C00F70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E4898981DB8B51000C00F70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7E4898A11DB8F00100C00F70 /* ObservableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
+		7E4898A11DB8F00100C00F70 /* ObservableUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableUI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +129,7 @@
 				7E4898801DB8B42100C00F70 /* Observable.swift */,
 				7E4898821DB8B49300C00F70 /* CombinedObservable.swift */,
 				7E4898841DB8B4D000C00F70 /* ObservableMethods.swift */,
-				7E4898A11DB8F00100C00F70 /* ObservableObject.swift */,
+				7E4898A11DB8F00100C00F70 /* ObservableUI.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -306,7 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E4898851DB8B4D000C00F70 /* ObservableMethods.swift in Sources */,
-				7E4898A21DB8F00100C00F70 /* ObservableObject.swift in Sources */,
+				7E4898A21DB8F00100C00F70 /* ObservableUI.swift in Sources */,
 				7E4898811DB8B42100C00F70 /* Observable.swift in Sources */,
 				7E4898831DB8B49300C00F70 /* CombinedObservable.swift in Sources */,
 			);
@@ -595,6 +595,7 @@
 				7E48989B1DB8B51000C00F70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
