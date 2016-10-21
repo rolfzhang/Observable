@@ -17,7 +17,7 @@ public class ObservableUI<O: UIControl, V>: NSObject, ObservableEditableType {
     private var get: (O->T?)!
     private var set: ((O, V?)->())?
     
-    public init(_ source: O, _ event: UIControlEvents, get: O->T?, set: ((O, V?)->())? = nil) {
+    public init(_ source: O, _ event: UIControlEvents, set: ((O, V?)->())? = nil, get: O->T?) {
         super.init()
         
         self.source = source

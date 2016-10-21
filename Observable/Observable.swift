@@ -100,10 +100,10 @@ public class Observable<O1>: ObservableEditableType {
     public let observers: NSMutableArray = []
     
     private var data: T?
-    private var get: Getter?
-    private var set: Setter?
+    private var get: Getter
+    private var set: Setter
     
-    public init(get: Getter, set: Setter? = nil) {
+    public init(get: Getter, set: Setter) {
         self.get = get
         self.set = set
     }
@@ -120,7 +120,7 @@ public class Observable<O1>: ObservableEditableType {
     }
     
     public convenience init(_ value: T? = nil) {
-        self.init(get: { nil })
+        self.init(get: { nil }, set: {_ in })
         self.data = value
         
         weak var _self = self
@@ -129,12 +129,12 @@ public class Observable<O1>: ObservableEditableType {
     }
     
     public func value() -> T? {
-        return get?()
+        return get()
     }
     
     public func setValue(value: T?) {
         do {
-            try set?(value)
+            try set(value)
             self.notify()
         } catch {}
     }

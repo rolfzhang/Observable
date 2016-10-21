@@ -15,7 +15,6 @@ extension UITextField {
     }
 }
 
-
 class ViewController: UIViewController {
 
     @IBOutlet weak var first: UITextField!
