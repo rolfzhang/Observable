@@ -22,6 +22,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var third: UITextField!
     @IBOutlet weak var result: UILabel!
     
+    @IBOutlet weak var countLabel: UILabel!
+    
+    var timer: NSTimer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -34,6 +38,15 @@ class ViewController: UIViewController {
                 label.text = "\(i1+i2+i3)"
             }
         }
+        
+        let count = Observable(0)
+        bind(countLabel, count) { label, count in
+            label.text = "\(count!) s"
+        }
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, repeats: true) { _ in
+            count <- count.value()! + 1
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,4 +54,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
+
+
+
 

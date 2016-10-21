@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -89,14 +90,37 @@
                                     <constraint firstItem="GG2-JE-I96" firstAttribute="top" secondItem="S4c-xl-pT5" secondAttribute="top" constant="12" id="zuO-iR-r2U"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用时长：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHD-JT-qyP">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="87" id="ERz-da-Fei"/>
+                                    <constraint firstAttribute="height" constant="21" id="hoW-5O-irP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTS-nM-fc9" userLabel="count">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Tuk-L7-mSE"/>
+                                    <constraint firstAttribute="width" constant="115" id="ud0-f0-qeO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="hTS-nM-fc9" firstAttribute="leading" secondItem="eHD-JT-qyP" secondAttribute="trailing" constant="8" id="Clp-SC-v3H"/>
+                            <constraint firstItem="eHD-JT-qyP" firstAttribute="top" secondItem="S4c-xl-pT5" secondAttribute="bottom" constant="29" id="bbR-Gg-4jo"/>
+                            <constraint firstItem="eHD-JT-qyP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="104" id="fAW-VP-Sst"/>
+                            <constraint firstItem="hTS-nM-fc9" firstAttribute="top" secondItem="S4c-xl-pT5" secondAttribute="bottom" constant="29" id="hQt-og-woQ"/>
                             <constraint firstItem="S4c-xl-pT5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iTZ-x9-n5H"/>
                             <constraint firstItem="S4c-xl-pT5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="128" id="yHe-4n-lab"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="countLabel" destination="hTS-nM-fc9" id="GrA-FT-Qmv"/>
                         <outlet property="first" destination="GG2-JE-I96" id="MnM-j1-DjI"/>
                         <outlet property="result" destination="1Bd-Ch-3MI" id="Ggf-mR-sHS"/>
                         <outlet property="second" destination="lnM-HS-tJV" id="RGM-G2-bYf"/>
