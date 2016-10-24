@@ -1,5 +1,5 @@
 //
-//  ObservableObject.swift
+//  ObservableUI.swift
 //  Observable
 //
 //  Created by Rolf on 2016/10/20.
@@ -10,14 +10,18 @@ import UIKit
 
 public class ObservableUI<O: UIControl, V>: NSObject, ObservableEditableType {
     public typealias T = V
+    public typealias Getter = O->T?
+    public typealias Setter = (O, T?) throws ->()
+    public typealias NotNilSetter = (O, T) throws ->()
+    
     public let observers: NSMutableArray = []
     
     weak var source: O?
     var event: UIControlEvents!
-    private var get: (O->T?)!
-    private var set: ((O, V?)->())?
+    private var get: Getter!
+    private var set: Setter?
     
-    public init(_ source: O, _ event: UIControlEvents, set: ((O, V?)->())? = nil, get: O->T?) {
+    public init(_ source: O, _ event: UIControlEvents, get: Getter, set: Setter? = nil) {
         super.init()
         
         self.source = source
@@ -29,6 +33,18 @@ public class ObservableUI<O: UIControl, V>: NSObject, ObservableEditableType {
         source.observables[event.rawValue] = self
     }
     
+    public convenience init(_ source: O, _ event: UIControlEvents, get: Getter, setNotNil: NotNilSetter) {
+        self.init(
+            source, event,
+            get: get,
+            set: {
+                guard let newValue = $1 else {
+                    throw ObservableError
+                }
+                try setNotNil($0, newValue)
+            })
+    }
+    
     public func value() -> T? {
         if let object = source {
             return get(object)
@@ -38,8 +54,10 @@ public class ObservableUI<O: UIControl, V>: NSObject, ObservableEditableType {
     
     public func setValue(value: T?) {
         if let source = source, let set = set {
-            set(source, value)
-            self.notify()
+            do {
+                try set(source, value)
+                self.notify()
+            } catch {}
         }
     }
     
@@ -66,6 +84,38 @@ extension UIControl {
                 return observables
             }
         }
+    }
+}
+
+extension UITextField {
+    public func o_text(event: UIControlEvents = .EditingChanged) -> ObservableUI<UITextField, String> {
+        return ObservableUI(self, event,
+                            get: { return $0.text },
+                            set: { $0.text = $1 })
+    }
+}
+
+extension UISlider {
+    public func o_value(event: UIControlEvents = .EditingChanged) -> ObservableUI<UISlider, Float> {
+        return ObservableUI(self, event,
+                            get: { return $0.value },
+                            setNotNil: { $0.setValue($1, animated: true) })
+    }
+}
+
+extension UIStepper {
+    public func o_value(event: UIControlEvents = .EditingChanged) -> ObservableUI<UIStepper, Double> {
+        return ObservableUI(self, event,
+                            get: { return $0.value },
+                            setNotNil: { $0.value = $1 })
+    }
+}
+
+extension UISwitch {
+    public func o_on(event: UIControlEvents = .EditingChanged) -> ObservableUI<UISwitch, Bool> {
+        return ObservableUI(self, event,
+                            get: { return $0.on },
+                            setNotNil: { $0.setOn($1, animated: true) })
     }
 }
 

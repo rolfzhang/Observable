@@ -9,12 +9,6 @@
 import UIKit
 import Observable
 
-extension UITextField {
-    func o_text(event: UIControlEvents = .EditingChanged) -> ObservableUI<UITextField, String> {
-        return ObservableUI(self, event) { return $0.text }
-    }
-}
-
 class ViewController: UIViewController {
 
     @IBOutlet weak var first: UITextField!
@@ -54,7 +48,4 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
-
-
-
 
